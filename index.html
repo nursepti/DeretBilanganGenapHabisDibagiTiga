@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deret Bilangan Genap</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #hasilDeret {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <form id="deretForm">
+        <h2>Deret Bilangan Genap yang Habis Dibagi 3</h2>
+
+        <label for="nilaiAwal">Nilai Awal:</label>
+        <input type="number" id="nilaiAwal" required>
+
+        <label for="nilaiAkhir">Nilai Akhir:</label>
+        <input type="number" id="nilaiAkhir" required>
+
+        <button type="button" onclick="generateSeries()">Generate Deret</button>
+    </form>
+
+    <div id="hasilDeret"></div>
+
+    <script>
+        function generateSeries() {
+            var nilaiAwal = parseInt(document.getElementById('nilaiAwal').value);
+            var nilaiAkhir = parseInt(document.getElementById('nilaiAkhir').value);
+
+            var deret = [];
+            var jumlahDeret = 0;
+            var jumlahNilai = 0;
+
+            for (var i = nilaiAwal; i <= nilaiAkhir; i++) {
+                if (i % 2 === 0 && i % 3 === 0) {
+                    deret.push(i);
+                    jumlahDeret++;
+                    jumlahNilai += i;
+                }
+            }
+
+            // Menampilkan hasil
+            var hasilDeret = '<h3>Hasil Deret</h3>';
+            hasilDeret += '<p><strong>Nilai Awal:</strong> ' + nilaiAwal + '</p>';
+            hasilDeret += '<p><strong>Nilai Akhir:</strong> ' + nilaiAkhir + '</p>';
+            hasilDeret += '<p><strong>Deret yang tampil:</strong> ' + deret.join(', ') + '</p>';
+            hasilDeret += '<p><strong>Jumlah deret bilangan:</strong> ' + jumlahDeret + ' bilangan</p>';
+            hasilDeret += '<p><strong>Jumlah nilai bilangan:</strong> ' + jumlahNilai + '</p>';
+
+            document.getElementById('hasilDeret').innerHTML = hasilDeret;
+        }
+    </script>
+</body>
+</html>
